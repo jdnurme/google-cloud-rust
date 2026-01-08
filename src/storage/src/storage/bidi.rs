@@ -13,7 +13,7 @@
 // limitations under the License.
 
 mod active_read;
-pub(crate) mod connector;
+pub mod connector;
 mod normalized_range;
 mod range_reader;
 mod redirect;
@@ -22,7 +22,8 @@ mod requested_range;
 mod resume_redirect;
 mod retry_redirect;
 pub(crate) mod stub;
-pub(crate) mod transport;
+pub mod transport;
+pub use gaxi::grpc::Client as GrpcClient;
 mod worker;
 
 use crate::google::storage::v2::{BidiReadObjectRequest, BidiReadObjectResponse};

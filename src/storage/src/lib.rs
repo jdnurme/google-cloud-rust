@@ -41,6 +41,7 @@ pub mod retry_policy;
 pub mod signed_url;
 pub use crate::storage::request_options;
 pub use crate::storage::streaming_source;
+pub use crate::storage::bidi;
 
 mod control;
 mod storage;
@@ -49,6 +50,7 @@ pub mod client {
     //! Clients to interact with Google Cloud Storage.
     pub use crate::control::client::StorageControl;
     pub use crate::storage::client::Storage;
+    pub use gaxi::options::ClientConfig;
 }
 pub mod builder {
     //! Request builders.
@@ -89,7 +91,7 @@ pub mod stub {
 pub(crate) mod generated;
 
 #[allow(dead_code)]
-pub(crate) mod google {
+pub mod google {
     pub mod iam {
         pub mod v1 {
             include!("generated/protos/storage/google.iam.v1.rs");

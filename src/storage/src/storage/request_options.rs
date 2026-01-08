@@ -45,8 +45,14 @@ pub struct RequestOptions {
     pub(crate) bidi_attempt_timeout: Duration,
 }
 
+impl Default for RequestOptions {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl RequestOptions {
-    pub(crate) fn new() -> Self {
+    pub fn new() -> Self {
         let retry_policy = Arc::new(crate::retry_policy::storage_default());
         let backoff_policy = Arc::new(crate::backoff_policy::default());
         let retry_throttler = Arc::new(Mutex::new(AdaptiveThrottler::default()));
